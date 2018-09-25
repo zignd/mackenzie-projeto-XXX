@@ -1,4 +1,4 @@
-# [Circuitos Elétricos e Eletrônicos] 2º sem. 2018
+# Circuitos Elétricos e Eletrônicos 2º sem. 2018
 
 ## Turma 01N
 ## Projeto: Radio-Controlled Car

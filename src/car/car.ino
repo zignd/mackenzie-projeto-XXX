@@ -3,14 +3,14 @@
 #include <RF24.h>
 
 // Bridge
-const int BDG_IN1 = 4;
-const int BDG_IN2 = 5;
-const int BDG_IN3 = 6;
-const int BDG_IN4 = 7;
+const int BDG_IN1 = 3;
+const int BDG_IN2 = 4;
+const int BDG_IN3 = 5;
+const int BDG_IN4 = 6;
 
 // nRF24L01+
-const int NRF_CE = 2;
-const int NRF_CSN = 3;
+const int NRF_CE = 7;
+const int NRF_CSN = 8;
 
 RF24 radio(NRF_CE, NRF_CSN);
 

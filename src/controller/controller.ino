@@ -15,8 +15,8 @@ const int DIR_RIGHT = 3;
 const int DIR_LEFT = 4;
 
 // nRF24L01+
-const int NRF_CE = 5;
-const int NRF_CSN = 6;
+const int NRF_CE = 7;
+const int NRF_CSN = 8;
 RF24 radio(NRF_CE, NRF_CSN);
 const byte address[4] = "1";
 

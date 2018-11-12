@@ -5,6 +5,7 @@
 ## Integrantes do grupo:
 
 * Igor Hipólito Vieira, 4180942-4
+* Salomon Asher Motoryn, 4182512-8
 
 ## Descrição resumida do projeto
 

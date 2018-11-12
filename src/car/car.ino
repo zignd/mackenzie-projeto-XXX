@@ -14,7 +14,7 @@ const int NRF_CSN = 3;
 
 RF24 radio(NRF_CE, NRF_CSN);
 
-const byte address[6] = "00001";
+const byte address[4] = "1";
 
 void setup() {
   pinMode(BDG_IN1, OUTPUT);
@@ -23,40 +23,45 @@ void setup() {
   pinMode(BDG_IN4, OUTPUT);
 
   Serial.begin(9600);
+  
   radio.begin();
   radio.openReadingPipe(0, address);
-  radio.setPALevel(RF24_PA_MIN);
+  //radio.setPALevel(RF24_PA_MAX);
   radio.startListening();
 }
 
 void loop() {
   if (radio.available()) {
+    Serial.println("available");
     char text[32] = "";
     radio.read(&text, sizeof(text));
     Serial.println(text);
+  } else {
+    Serial.println("not available");
   }
+  delay(100);
   
-  // testMotors();
+//  testMotors();
 }
 
 void testMotors() {
-  moveForward();
-  delay(2000);
+//  moveForward();
+//  delay(2000);
+//  
+//  stopMotors();
+//  delay(500);
   
-  stopMotors();
-  delay(500);
-  
-  moveBackward();
-  delay(2000);
-  
-  stopMotors();
-  delay(500);
+//  moveBackward();
+//  delay(2000);
+//  
+//  stopMotors();
+//  delay(500);
 
-  turnRight();
-  delay(2000);
-
-  stopMotors();
-  delay(500);
+//  turnRight();
+//  delay(2000);
+//
+//  stopMotors();
+//  delay(500);
 
   turnLeft();
   delay(2000);
@@ -82,19 +87,19 @@ void moveBackward() {
 }
 
 void turnRight() {
-  digitalWrite(BDG_IN1, LOW);
-  digitalWrite(BDG_IN2, HIGH);
-
-  digitalWrite(BDG_IN3, HIGH);
-  digitalWrite(BDG_IN4, LOW);
-}
-
-void turnLeft() {
   digitalWrite(BDG_IN1, HIGH);
   digitalWrite(BDG_IN2, LOW);
 
   digitalWrite(BDG_IN3, LOW);
   digitalWrite(BDG_IN4, HIGH);
+}
+
+void turnLeft() {
+  digitalWrite(BDG_IN1, LOW);
+  digitalWrite(BDG_IN2, HIGH);
+
+  digitalWrite(BDG_IN3, HIGH);
+  digitalWrite(BDG_IN4, LOW);
 }
 
 void stopMotors() {

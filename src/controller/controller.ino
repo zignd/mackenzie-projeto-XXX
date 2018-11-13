@@ -18,7 +18,7 @@ const int DIR_LEFT = 4;
 const int NRF_CE = 7;
 const int NRF_CSN = 8;
 RF24 radio(NRF_CE, NRF_CSN);
-const byte address[4] = "1";
+const byte address[6] = "00001";
 
 void setup() {
   //const int JOY_PIN3 = 7;
@@ -27,28 +27,30 @@ void setup() {
   //pinMode(JOY_PIN3, INPUT_PULLUP);
 
   radio.begin();
+  radio.setChannel(1);
+  radio.setPALevel(RF24_PA_MAX);
   radio.stopListening();
-  radio.setAddressWidth(4);
-  //radio.setPALevel(RF24_PA_MAX);
   radio.openWritingPipe(address);
 
   Serial.begin(9600);
 }
 
 void loop() {
-//  int direction = getDirection();
-//  Serial.println(direction);
-//
+  int direction = getDirection();
+  Serial.print("Direction: ");
+  Serial.println(direction);
+
 //  const size_t msgBufferSize = JSON_OBJECT_SIZE(1);
 //  StaticJsonBuffer<msgBufferSize> jsonBuffer;
 //  JsonObject& root = jsonBuffer.createObject();
 //  root["direction"] = direction;
 
   const char text[] = "ayy lmao";
+  Serial.print("Sent: ");
   Serial.println(radio.write(&text, sizeof(text)));
   //radio.write(&root, sizeof(root));
 
-  delay(200);
+  delay(1000);
 }
 
 int getDirection() {

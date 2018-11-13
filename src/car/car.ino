@@ -14,7 +14,7 @@ const int NRF_CSN = 8;
 
 RF24 radio(NRF_CE, NRF_CSN);
 
-const byte address[4] = "1";
+const byte address[6] = "00001";
 
 void setup() {
   pinMode(BDG_IN1, OUTPUT);
@@ -25,21 +25,23 @@ void setup() {
   Serial.begin(9600);
   
   radio.begin();
+  radio.setChannel(1);
+  radio.setPALevel(RF24_PA_MAX);
   radio.openReadingPipe(0, address);
-  //radio.setPALevel(RF24_PA_MAX);
   radio.startListening();
 }
 
 void loop() {
   if (radio.available()) {
     Serial.println("available");
-    char text[32] = "";
+    char text[32] = {0};
     radio.read(&text, sizeof(text));
     Serial.println(text);
   } else {
     Serial.println("not available");
   }
-  delay(100);
+
+  delay(1000);
   
 //  testMotors();
 }

@@ -34,7 +34,7 @@ void setup() {
 void loop() {
   if (radio.available()) {
     Serial.println("available");
-    char text[32] = {0};
+    char text[2];
     radio.read(&text, sizeof(text));
     Serial.println(text);
   } else {

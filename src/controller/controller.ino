@@ -40,13 +40,10 @@ void loop() {
   Serial.print("Direction: ");
   Serial.println(direction);
 
-//  const size_t msgBufferSize = JSON_OBJECT_SIZE(1);
-//  StaticJsonBuffer<msgBufferSize> jsonBuffer;
-//  JsonObject& root = jsonBuffer.createObject();
-//  root["direction"] = direction;
-
-  const char text[] = "ayy lmao";
+  char text[2];
+  sprintf(text, "%d", direction);
   Serial.print("Sent: ");
+  Serial.println(text);
   Serial.println(radio.write(&text, sizeof(text)));
   //radio.write(&root, sizeof(root));
 

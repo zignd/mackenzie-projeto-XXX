@@ -2,10 +2,11 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 #include <ArduinoJson.h>
+#include <printf.h>
 
 // Joystick
-const int JOY_PIN1 = A0;
-const int JOY_PIN2 = A1;
+const int JOY_PIN1 = A4;
+const int JOY_PIN2 = A5;
 
 // Directions
 const int DIR_NONE = -1;
@@ -33,9 +34,11 @@ void setup() {
   radio.openWritingPipe(address);
 
   Serial.begin(9600);
+  printf_begin();
 }
 
 void loop() {
+  //radio.printDetails();
   int direction = getDirection();
   Serial.print("Direction: ");
   Serial.println(direction);
@@ -45,9 +48,8 @@ void loop() {
   Serial.print("Sent: ");
   Serial.println(text);
   Serial.println(radio.write(&text, sizeof(text)));
-  //radio.write(&root, sizeof(root));
 
-  delay(1000);
+  delay(100);
 }
 
 int getDirection() {

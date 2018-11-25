@@ -1,6 +1,8 @@
 #include <SPI.h>
 #include <nRF24L01.h>
 #include <RF24.h>
+#include <string.h>
+#include <printf.h>
 
 // Bridge
 const int BDG_IN1 = 3;
@@ -23,6 +25,7 @@ void setup() {
   pinMode(BDG_IN4, OUTPUT);
 
   Serial.begin(9600);
+  printf_begin();
   
   radio.begin();
   radio.setChannel(1);
@@ -32,44 +35,34 @@ void setup() {
 }
 
 void loop() {
+  //radio.printDetails();
   if (radio.available()) {
-    Serial.println("available");
-    char text[2];
-    radio.read(&text, sizeof(text));
-    Serial.println(text);
+    Serial.println("Radio available");
+    char direction[2];
+    radio.read(&direction, sizeof(direction));
+    Serial.print("Direction received: ");
+    Serial.println(direction);
+    if (strcmp(direction, "1") == 0) {
+      Serial.println("Moving forward");
+      moveForward();
+    } else if (strcmp(direction, "2") == 0) {
+      Serial.println("Moving backward");
+      moveBackward();
+    } else if (strcmp(direction, "3") == 0) {
+      Serial.println("Turning right");
+      turnRight();
+    } else if (strcmp(direction, "4") == 0) {
+      Serial.println("Turning left");
+      turnLeft();
+    } else {
+      Serial.println("Stopping motors");
+      stopMotors();
+    }
   } else {
-    Serial.println("not available");
+    Serial.println("Radio not available");
   }
 
-  delay(1000);
-  
-//  testMotors();
-}
-
-void testMotors() {
-//  moveForward();
-//  delay(2000);
-//  
-//  stopMotors();
-//  delay(500);
-  
-//  moveBackward();
-//  delay(2000);
-//  
-//  stopMotors();
-//  delay(500);
-
-//  turnRight();
-//  delay(2000);
-//
-//  stopMotors();
-//  delay(500);
-
-  turnLeft();
-  delay(2000);
-
-  stopMotors();
-  delay(500);
+  delay(1000 );
 }
 
 void moveForward() {

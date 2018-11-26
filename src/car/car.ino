@@ -35,7 +35,8 @@ void setup() {
 }
 
 void loop() {
-  //radio.printDetails();
+  // For debugging
+  // radio.printDetails();
   if (radio.available()) {
     Serial.println("Radio available");
     char direction[2];
@@ -61,8 +62,6 @@ void loop() {
   } else {
     Serial.println("Radio not available");
   }
-
-  delay(1000 );
 }
 
 void moveForward() {

@@ -22,11 +22,6 @@ RF24 radio(NRF_CE, NRF_CSN);
 const byte address[6] = "00001";
 
 void setup() {
-  //const int JOY_PIN3 = 7;
-  //int JOY_SW;
-  //JOY_SW = digitalRead(JOY_PIN3);
-  //pinMode(JOY_PIN3, INPUT_PULLUP);
-
   radio.begin();
   radio.setChannel(1);
   radio.setPALevel(RF24_PA_MAX);
@@ -38,7 +33,8 @@ void setup() {
 }
 
 void loop() {
-  //radio.printDetails();
+  // For debugging
+  // radio.printDetails();
   int direction = getDirection();
   Serial.print("Direction: ");
   Serial.println(direction);
@@ -48,8 +44,6 @@ void loop() {
   Serial.print("Sent: ");
   Serial.println(text);
   Serial.println(radio.write(&text, sizeof(text)));
-
-  delay(100);
 }
 
 int getDirection() {
@@ -93,16 +87,6 @@ int getDirection() {
   } else {
     return DIR_NONE;
   }
-  
-//  if (JOY_Y <= JOY_X) {
-//    return DIR_FORWARD;
-//  } else if (JOY_Y >= JOY_X) {
-//    return DIR_BACKWARD;
-//  } else if (JOY_X < JOY_Y) {
-//    return DIR_LEFT;
-//  } else {
-//    return DIR_RIGHT;
-//  }
 }
 
 int readJoy(int pin) {

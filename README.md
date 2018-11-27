@@ -30,5 +30,26 @@ Para a elaboração do carrinho, usamos um Arduino Uno, uma placa de protoboard 
 
 ## Descrição do processo de montagem do projeto
 
+### Controle remoto
 
+Para a montagem do controle remoto, siga o diagrama de montagem abaixo utilizando os materiais descritos no tópico "Descrição detalhada do hardware" na seção "Controle remoto".
 
+![Controle Remoto 1](https://i.imgur.com/Ams6EKq.png)
+(diagrama de montagem)
+
+![Controle Remoto 2](https://i.imgur.com/1WzhqcZ.png)
+(diagrama esquemático)
+
+Em seguida basta fazer o upload do código localizado em `src/controller/controller.ino` para o Arduino Uno que será utilizado para o controle remoto.
+
+### Carrinho
+
+Para a montagem do carrinho, siga o diagrama de montagem abaixo utilizando os materiais descritos no tópico "Descrição detalhada do hardware" na seção "Carrinho".
+
+![Carrinho 1](https://i.imgur.com/YfYKh7C.png)
+(diagrama de montagem)
+
+![Carrinho 2](https://i.imgur.com/VJpcJ6v.png)
+(diagrama esquemático)
+
+Em seguida basta fazer o upload do código localizado em `src/car/car.ino` para o Arduino Uno que será utilizado para o carrinho.

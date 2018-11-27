@@ -17,3 +17,13 @@ Obs:
 `src/` códigos desenvolvidos
 
 `doc/` documentação do projeto
+
+## Descrição detalhada do hardware
+
+### Controle remoto
+
+Para a elaboração do controle, usamos um Arduino Uno, uma placa de protoboard 5x17, um módulo de rádio NRF24L01+ para transmissão de sinais ao módulo de rádio NRF24L01+ localizado no carrinho, um joystick, uma bateria de 9 volts.
+
+### Carrinho
+
+Para a elaboração do carrinho, usamos um Arduino Uno, uma placa de protoboard 5x17, um módulo de rádio NRF24L01+ para o recebimento de sinais do módulo de rádio NRF24L01+ localizado no controle remoto.
